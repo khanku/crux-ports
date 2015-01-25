@@ -1,0 +1,17 @@
+# Description: Entropy harvesting daemon using CPU timings,
+# URL: http://www.issihosts.com/haveged/
+# Depends on:
+
+name=haveged
+version=1.9.1
+release=1
+source=(http://www.issihosts.com/haveged/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+        mkdir -p $PKG/etc/rc.d/
+        cp $SRC/../../haveged $PKG/etc/rc.d/haveged
+}

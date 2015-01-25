@@ -1,0 +1,14 @@
+# Description: girara is a library that implements a user interface that focuses on simplicity and minimalism.
+# URL: http://pwmt.org/projects/girara/
+# Depends on: gtk3
+
+name=girara
+version=0.2.3
+release=1
+source=(http://pwmt.org/projects/$name/download/$name-$version.tar.gz)
+
+build() {
+   cd $name-$version
+   make COLOR=0
+   make DESTDIR=$PKG install
+}

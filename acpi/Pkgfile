@@ -1,0 +1,15 @@
+# Description: Attempts to replicate the functionality of the 'old' apm command on ACPI systems
+# URL: http://sourceforge.net/projects/acpiclient/
+# Depends on:
+
+name=acpi
+version=1.7
+release=1
+source=(http://downloads.sourceforge.net/project/acpiclient/acpiclient/$version/$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

@@ -1,0 +1,15 @@
+# Description: Layer Four Traceroute
+# URL: http://pwhois.org/lft/
+# Depends on:
+
+name=lft
+version=3.73
+release=1
+source=(http://pwhois.org/dl/index.who?file=$name-$version.tar.gz)
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}

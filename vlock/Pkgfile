@@ -1,0 +1,19 @@
+# Description: vlock is a program to lock one or more sessions on the Linux console.
+# URL: http://repo.or.cz/w/vlock.git
+# Depends on: linux-pam
+
+name=vlock
+version=2.2.3
+release=1
+
+source=(http://repo.or.cz/w/vlock.git/snapshot/c3a1189b857430aa2c64f701b187e8ef1563a968.tar.gz)
+
+build() {
+   cd $name
+   ./configure --prefix=/usr
+   make
+   groupadd --force --system vlock
+   make DESTDIR=$PKG install
+   mkdir -p $PKG/etc/pam.d/
+   echo "auth    include         system-auth" >$PKG/etc/pam.d/vlock
+}

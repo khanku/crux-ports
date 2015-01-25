@@ -1,0 +1,15 @@
+# Description: PDF support for zathura by using the poppler rendering library
+# URL: http://pwmt.org/projects/zathura-pdf-poppler
+# Depends on: zathura poppler
+
+name=zathura-pdf-poppler
+version=0.2.5
+release=1
+
+source=(http://pwmt.org/projects/$name/download/$name-$version.tar.gz)
+
+build() {
+   cd $name-$version
+   make
+   make DESTDIR=$PKG install
+}

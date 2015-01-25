@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# /etc/rc.d/haveged: start/stop haveged
+#
+
+PIDFILE=/var/run/haveged.pid
+
+case $1 in
+start)
+	/usr/sbin/haveged -w 1014
+	;;
+stop)
+	kill $(cat $PIDFILE)
+	;;
+restart)
+	$0 stop
+	sleep 2
+	$0 start
+	;;
+*)
+	echo "usage: $0 [start|stop|restart]"
+	;;
+esac
+
+# End of file

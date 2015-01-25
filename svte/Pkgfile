@@ -1,0 +1,11 @@
+name=svte
+version=master
+release=1
+
+source=(http://$name.googlecode.com/archive/$version.tar.gz)
+
+build() {
+   cd $name-$version
+   make
+   make DESTDIR=$PKG install
+}

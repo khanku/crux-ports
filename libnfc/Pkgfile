@@ -1,0 +1,15 @@
+# Description: Public platform independent Near Field Communication (NFC) library
+# URL: http://nfc-tools.org/index.php?title=Libnfc
+# Depends on:
+
+name=libnfc
+version=1.7.1
+release=1
+source=(https://bintray.com/artifact/download/nfc-tools/sources/$name-$version.tar.bz2)
+
+build() {
+	cd $name-$version
+	cmake -DCMAKE_INSTALL_PREFIX:PATH=/usr .
+	make
+	make DESTDIR=$PKG install
+}

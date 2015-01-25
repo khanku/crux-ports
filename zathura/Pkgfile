@@ -1,0 +1,15 @@
+# Description: zathura is a highly customizable and functional document viewer.
+# URL: http://pwmt.org/projects/zathura/
+# Depends on: girara
+
+name=zathura
+version=0.3.2
+release=1
+
+source=(http://pwmt.org/projects/$name/download/$name-$version.tar.gz)
+
+build() {
+   cd $name-$version
+   make COLOR=0
+   make DESTDIR=$PKG install
+}

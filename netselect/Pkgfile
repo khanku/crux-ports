@@ -1,0 +1,15 @@
+# Description: This is netselect, an ultrafast intelligent parallelizing binary-search implementation of "ping."
+# URL: http://apenwarr.ca/netselect/
+# Depends on:
+
+name=netselect
+version=0.3
+release=1
+source=(http://apenwarr.ca/$name/$name-$version.tar.gz)
+
+build() {
+	cd $name
+	make
+	mkdir -p $PKG/usr/bin/
+	install -s -o root -g root -m 0755  netselect $PKG/usr/bin/
+}

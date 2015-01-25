@@ -1,0 +1,12 @@
+name=gmrun
+version=master
+release=1
+
+source=(https://github.com/rtyler/gmrun/archive/master.tar.gz)
+
+build() {
+   cd $name-$version
+   ./autogen.sh --prefix=/usr
+   make
+   make DESTDIR=$PKG install
+}
